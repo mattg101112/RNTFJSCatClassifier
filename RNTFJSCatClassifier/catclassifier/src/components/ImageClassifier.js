@@ -1,12 +1,17 @@
-const mobilenet = require('@tensorflow-models/mobilenet');
+const mobilenet = require('@tensorflow-models/mobilenet')
 
-const img = document.getElementById('img');
+export const classifyImage = async (img) => {
+  const model = await mobilenet.load()
 
-// Load the model.
-const model = await mobilenet.load();
+  try {
+    const predictions = await model.classify(img.uri)
+      if(predictions){
+        console.log('Predictions: ')
+        console.log(predictions)
+      }
+    } catch (err) {
+      console.error('Error', err.message)
+    }
 
-// Classify the image.
-const predictions = await model.classify(img);
-
-console.log('Predictions: ');
-console.log(predictions);
+    return predictions
+}

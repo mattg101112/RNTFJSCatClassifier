@@ -9,6 +9,9 @@ import ImageScreen from './ImageScreen';
 const Stack = createNativeStackNavigator();
 
 function App() {
+  console.log('appp loaded')
+
+
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="CameraScreen">
